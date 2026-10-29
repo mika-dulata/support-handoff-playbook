@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bot or Human? Handoff Playbook</title>
+<meta name="description" content="A practice playbook for crypto exchange support: 16 synthetic tickets, five routing questions and a handoff note builder. By Meruyert Nurkaliyeva.">
+<meta property="og:title" content="Bot or Human? A handoff playbook for crypto exchange support">
+<meta property="og:description" content="16 synthetic tickets. Decide who answers: the bot, an agent, security or compliance. Then see why.">
+<meta name="theme-color" content="#07101f">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#07101f;--bg-glow:#10294a;--surface:#0e2138;--surface-2:#0b1a2e;--surface-3:#142b4b;--line:#1e3a5c;--line-strong:#2d4f78;--ink:#f4f7fb;--ink-2:#c9d5e3;--muted:#9fb0c4;--gold:#d4a537;--on-gold:#10243d;--ok:#3ecf8e;--warn:#e8b04b;--bad:#eb7d7d;--info:#4f9fe8;--focus:#f0c75e;
+--f-display:"Archivo","Helvetica Neue",Arial,sans-serif;--f-body:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;--f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+--gutter:clamp(16px,4vw,40px);--radius:6px;--maxw:1120px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg) radial-gradient(1200px 600px at 80% -10%,var(--bg-glow),transparent 60%) no-repeat;color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:var(--gold);text-underline-offset:3px}
+a:hover{color:var(--focus)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gutter)}
+header.top{position:sticky;top:0;z-index:10;background:rgba(7,16,31,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+.brand{font-family:var(--f-display);font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:.01em;white-space:nowrap}
+.brand span{color:var(--gold)}
+nav.links{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none}
+nav.links::-webkit-scrollbar{display:none}
+nav.links a{color:var(--ink-2);text-decoration:none;font-size:.875rem;white-space:nowrap}
+nav.links a:hover{color:var(--gold)}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.15;margin:0 0 12px}
+h1{font-size:clamp(2.2rem,1.4rem + 3.6vw,3.8rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.1rem)}
+h3{font-size:1.125rem}
+p{margin:0 0 14px}
+.lead{font-size:1.15rem;color:var(--ink-2);max-width:62ch}
+.muted{color:var(--muted)}
+section{padding:56px 0;border-top:1px solid var(--line)}
+section.hero{border-top:0;padding:64px 0 48px}
+.why{border-left:3px solid var(--gold);background:var(--surface-2);padding:12px 16px;border-radius:0 var(--radius) var(--radius) 0;color:var(--ink-2);max-width:72ch;margin:18px 0 24px}
+.why b{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;color:var(--gold);display:block;margin-bottom:2px}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 .95rem var(--f-body);padding:11px 18px;border-radius:var(--radius);border:1px solid var(--line-strong);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none;min-height:44px}
+.btn:hover{border-color:var(--gold);color:var(--ink)}
+.btn.primary{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}
+.btn.primary:hover{background:var(--focus);color:var(--on-gold)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;flex-wrap:wrap;gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;padding:3px 8px;border-radius:4px;border:1px solid var(--line-strong);color:var(--ink-2);text-transform:uppercase}
+.tag.ok{color:var(--ok);border-color:rgba(62,207,142,.45)}
+.tag.warn{color:var(--warn);border-color:rgba(232,176,75,.45)}
+.tag.bad{color:var(--bad);border-color:rgba(235,125,125,.45)}
+.tag.info{color:var(--info);border-color:rgba(79,159,232,.45)}
+label{display:block;font-size:.875rem;color:var(--ink-2);margin:0 0 6px}
+input,select,textarea{width:100%;font:1rem var(--f-body);color:var(--ink);background:var(--surface-2);border:1px solid var(--line-strong);border-radius:var(--radius-sm,4px);padding:10px 12px;min-height:44px}
+textarea{min-height:84px;resize:vertical}
+.field{margin-bottom:14px}
+.hint{font-size:.8rem;color:var(--muted);margin-top:4px}
+code,.mono{font-family:var(--f-mono);font-size:.9em}
+footer{border-top:1px solid var(--line);padding:32px 0 48px;color:var(--muted);font-size:.875rem}
+footer a{color:var(--ink-2)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+
+.trainer{display:grid;gap:20px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:900px){.trainer{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}}
+.ticket{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.ticket .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin-bottom:14px}
+.ticket .num{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.msg{background:var(--surface-2);border:1px solid var(--line);border-radius:12px 12px 12px 2px;padding:14px 16px;font-size:1.08rem;margin-bottom:10px}
+.ctx{font-size:.9rem;color:var(--muted);margin-bottom:18px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:420px){.choices{grid-template-columns:1fr}}
+.choice{text-align:left;justify-content:flex-start;flex-direction:column;align-items:flex-start;gap:2px;padding:12px 14px}
+.choice small{font-weight:400;color:var(--muted);font-size:.8rem}
+.choice.right{border-color:var(--ok);background:rgba(62,207,142,.10)}
+.choice.wrong{border-color:var(--bad);background:rgba(235,125,125,.10)}
+.answer{margin-top:18px;display:none}
+.answer.show{display:block}
+.verdict{font-family:var(--f-display);font-weight:700;font-size:1.1rem;margin-bottom:8px}
+.verdict.ok{color:var(--ok)}.verdict.no{color:var(--bad)}
+.say{border-left:3px solid var(--ok);padding:8px 12px;background:var(--surface-2);margin:10px 0;font-size:.95rem}
+.never{border-left:3px solid var(--bad);padding:8px 12px;background:var(--surface-2);margin:10px 0;font-size:.95rem}
+.say b,.never b{display:block;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;color:var(--muted)}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:18px}
+.side .score{font-family:var(--f-display);font-size:2.6rem;font-weight:800;line-height:1}
+.dots{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.dot{width:26px;height:26px;border-radius:4px;border:1px solid var(--line-strong);background:var(--surface-2);font:500 .7rem var(--f-mono);color:var(--muted);cursor:pointer;padding:0}
+.dot.cur{border-color:var(--gold);color:var(--ink)}
+.dot.r{background:rgba(62,207,142,.25);border-color:var(--ok);color:var(--ink)}
+.dot.w{background:rgba(235,125,125,.22);border-color:var(--bad);color:var(--ink)}
+.legend{display:grid;gap:8px;font-size:.9rem;color:var(--ink-2)}
+.legend div{display:flex;gap:10px;align-items:baseline}
+.legend .tag{flex:none;min-width:92px;text-align:center}
+ol.qs{counter-reset:q;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+ol.qs li{counter-increment:q;display:grid;grid-template-columns:44px 1fr;gap:14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+ol.qs li::before{content:counter(q);font-family:var(--f-display);font-weight:800;font-size:1.6rem;color:var(--gold);line-height:1}
+ol.qs h3{margin:0 0 4px}
+ol.qs p{margin:0;color:var(--ink-2)}
+ol.qs .then{margin-top:6px;font-size:.9rem}
+.builder{display:grid;gap:20px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:900px){.builder{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:480px){.two{grid-template-columns:1fr}}
+pre.note{white-space:pre-wrap;word-break:break-word;background:var(--surface-2);border:1px solid var(--line);border-radius:var(--radius);padding:16px;font:.88rem/1.55 var(--f-mono);color:var(--ink);margin:0 0 12px;min-height:260px}
+.copied{color:var(--ok);font-size:.875rem;margin-left:8px}
+.missing{color:var(--warn);font-size:.875rem;margin:0 0 12px}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+<a class="brand" href="https://mika-dulata.github.io/">Meruyert <span>Nurkaliyeva</span></a>
+<nav class="links"><a href="#trainer">Trainer</a><a href="#rules">Five questions</a><a href="#note">Handoff note</a><a href="#about">About</a></nav>
+</div></header>
+
+<main>
+<section class="hero"><div class="wrap">
+<p class="eyebrow">Handoff playbook · synthetic tickets</p>
+<h1>Bot or human?</h1>
+<p class="lead">On a crypto exchange the bot can answer most questions. The hard part is the few it must not touch: money moving right now, an account under review, a person being pushed by a scammer. This playbook is how I decide who answers.</p>
+<p class="muted">Sixteen made-up tickets, five routing questions and a builder for handoff notes. Nothing here comes from a real customer or a real company.</p>
+<div class="row" style="margin-top:20px"><a class="btn primary" href="#trainer">Try the 16 tickets</a><a class="btn" href="#rules">Read the five questions</a></div>
+</div></section>
+
+<section id="trainer"><div class="wrap">
+<p class="eyebrow">Trainer</p>
+<h2>Who should answer this ticket?</h2>
+<div class="why"><b>WHY IT MATTERS</b>A correct answer from the wrong responder can still hurt. A bot that explains an account restriction may tip off a suspect. A bot that sends a help article during an account takeover costs the user minutes they don't have.</div>
+<div class="trainer">
+ <div class="ticket" id="ticket" aria-live="polite"></div>
+ <aside class="card side">
+  <p class="eyebrow">Your score</p>
+  <div class="score"><span id="score">0</span><span class="muted" style="font-size:1.2rem"> / <span id="answered">0</span></span></div>
+  <div class="dots" id="dots" aria-label="Tickets"></div>
+  <div class="legend">
+   <div><span class="tag ok">Bot</span><span>Answer from the knowledge base. No account action needed.</span></div>
+   <div><span class="tag info">Agent</span><span>A person has to act, check or own the conversation.</span></div>
+   <div><span class="tag bad">Security</span><span>Money or access at risk now. P1, around the clock.</span></div>
+   <div><span class="tag warn">Compliance</span><span>Reviews, legal requests, fraud reports. Nothing disclosed in chat.</span></div>
+  </div>
+  <button class="btn" id="reset" style="margin-top:18px">Start over</button>
+ </aside>
+</div>
+</div></section>
+
+<section id="rules"><div class="wrap">
+<p class="eyebrow">Routing</p>
+<h2>Five questions before the bot answers</h2>
+<p class="lead">Ask them in this order. The first yes decides the route. If all five are no, the bot answers, from an article that has an owner and a review date.</p>
+<ol class="qs">
+ <li><div><h3>Is money or account access at risk right now?</h3><p>Unknown login, withdrawal the user didn't make, 2FA changed, a shared password or seed phrase, a "support" contact asking to verify a wallet.</p><p class="then"><span class="tag bad">Security</span> P1. A person replies first. The bot only gives safety steps while the user waits.</p></div></li>
+ <li><div><h3>Is there a review, a legal request or a fraud report?</h3><p>Restricted account, source of funds request, police or court letter, "tell me who owns this address".</p><p class="then"><span class="tag warn">Compliance</span> The reply is neutral and the same every time. No reasons, no hints, no promises about dates.</p></div></li>
+ <li><div><h3>Does the fix need someone to do something in the back office?</h3><p>Manual credit, missing memo or tag, wrong-network recovery, change of phone or email, refund.</p><p class="then"><span class="tag info">Agent</span> With the evidence already collected, so the user doesn't repeat the story.</p></div></li>
+ <li><div><h3>Is this person vulnerable, under pressure or making a formal complaint?</h3><p>Large share of savings, someone else directing them, distress, "I'll go to the regulator", or simply asking for a person.</p><p class="then"><span class="tag info">Agent</span> A senior one. Formal complaints get logged with their deadline.</p></div></li>
+ <li><div><h3>Has the bot already failed twice on this issue?</h3><p>Same question again, user rephrasing, or "that didn't help".</p><p class="then"><span class="tag info">Agent</span> The bot says it's handing over and passes its summary.</p></div></li>
+</ol>
+</div></section>
+
+<section id="note"><div class="wrap">
+<p class="eyebrow">No cold handoffs</p>
+<h2>Handoff note builder</h2>
+<div class="why"><b>WHY IT MATTERS</b>The worst handoff is the one where the agent opens with "how can I help you?" after the user already explained everything to the bot. A short structured note fixes that. Fill in the fields and copy the result into the ticket.</div>
+<div class="builder">
+ <form class="card" id="nf" autocomplete="off">
+  <div class="two">
+   <div class="field"><label for="f-type">Issue type</label><select id="f-type"></select></div>
+   <div class="field"><label for="f-ch">Channel</label><select id="f-ch"><option>In-app chat</option><option>Email</option><option>Telegram</option><option>Web form</option></select></div>
+  </div>
+  <div class="field"><label for="f-said">What the user reported</label><textarea id="f-said" placeholder="In their words, one or two lines"></textarea></div>
+  <div class="field"><label for="f-checked">What was already checked</label><textarea id="f-checked" placeholder="e.g. tx confirmed on Tron, 19 of 19 confirmations; not credited"></textarea></div>
+  <div class="two">
+   <div class="field"><label for="f-asset">Asset and amount</label><input id="f-asset" placeholder="e.g. 1,200 USDT"></div>
+   <div class="field"><label for="f-tx">Tx hash or reference</label><input id="f-tx" placeholder="optional"></div>
+  </div>
+  <div class="field"><label for="f-told">What the user has been told</label><textarea id="f-told" placeholder="So the agent doesn't contradict it"></textarea></div>
+  <div class="two">
+   <div class="field"><label for="f-lang">User's language</label><select id="f-lang"><option>English</option><option>Russian</option><option>Kazakh</option><option>Uzbek</option><option>Turkish</option></select></div>
+   <div class="field"><label for="f-mood">Mood</label><select id="f-mood"><option>Calm</option><option>Worried</option><option>Angry</option><option>Distressed</option></select></div>
+  </div>
+ </form>
+ <div>
+  <pre class="note" id="out"></pre>
+  <p class="missing" id="miss"></p>
+  <div class="row"><button class="btn primary" id="copy" type="button">Copy note</button><button class="btn" id="example" type="button">Fill an example</button><button class="btn" id="clear" type="button">Clear</button><span class="copied" id="copied" aria-live="polite"></span></div>
+ </div>
+</div>
+</div></section>
+
+<section id="about"><div class="wrap">
+<p class="eyebrow">About</p>
+<h2>Meruyert Nurkaliyeva</h2>
+<p class="lead">Head of Customer Support at a licensed crypto exchange and custody business. Before that, support at Binance on the English line: Customer Hero award for 161 CSATs in a month, Top Agent three times. Chainalysis CCI and CCCA certified.</p>
+<p>This playbook is practice material. The tickets, names and amounts are invented, and the routes reflect how I think about the problem, not any company's internal policy.</p>
+<div class="row"><a class="btn" href="https://mika-dulata.github.io/">Personal page</a><a class="btn" href="https://mika-dulata.github.io/support-lab/">Self-custody support lab</a><a class="btn" href="https://mika-dulata.github.io/support-kpi-calculator/">KPI calculator</a><a class="btn" href="https://www.linkedin.com/in/meruyert-nurkaliyeva">LinkedIn</a></div>
+</div></section>
+</main>
+<footer><div class="wrap">Synthetic data only. MIT licensed. <a href="https://github.com/mika-dulata/support-handoff-playbook">Source on GitHub</a></div></footer>
+
+<script>
+const R={bot:{t:'Bot',c:'ok',d:'answers from the knowledge base'},agent:{t:'Agent',c:'info',d:'a person acts or owns it'},sec:{t:'Security',c:'bad',d:'P1, money or access at risk'},comp:{t:'Compliance',c:'warn',d:'review, legal or fraud report'}};
+const T=[
+{m:"How long does a USDT withdrawal on Tron usually take?",x:"New user, verified, no open tickets.",a:'bot',w:"A general question with a stable answer. No account data needed.",s:"Usually a few minutes once it's processed. You can follow it with the tx hash on Tronscan. If it's been over an hour, reply here and a person will check.",n:"An exact time promise like \"2 minutes, guaranteed\"."},
+{m:"I deposited 1,200 USDT two hours ago. Tronscan shows it confirmed but my balance is still zero.",x:"Tx hash attached. Network matches the deposit address.",a:'agent',w:"Confirmed on chain but not credited means something stuck on our side. Only a person can check the deposit queue and credit it manually.",s:"I can see the hash, thanks. I'm passing this to a colleague who can check why it hasn't been credited. They'll see everything you sent.",n:"\"Please wait 24 hours\" with nobody actually looking."},
+{m:"I just got an email that my withdrawal to a new address was approved. I didn't do that!!",x:"Withdrawal created 6 minutes ago from a new device. Status: pending.",a:'sec',w:"Possible account takeover with funds still pending. Minutes decide whether the withdrawal can be stopped.",s:"I'm bringing in our security team right now and I'll stay with you. Don't click any links in that email. We will never ask for your password or 2FA codes.",n:"A link to the \"how to secure your account\" article and nothing else."},
+{m:"Why is my account restricted? I need to withdraw today, it's urgent.",x:"Account has an open compliance review.",a:'comp',w:"Explaining the reason for a review can tip off the customer. Support gives a neutral answer and routes it. No reasons, no dates it can't keep.",s:"Your account is temporarily limited while we complete a routine review. The team handling it will contact you by email if anything is needed from you. I've noted that this is urgent for you.",n:"Anything about AML, suspicious activity, a specific transaction, or \"it'll be lifted tomorrow\"."},
+{m:"Someone from your support messaged me on Telegram and asked me to verify my wallet through a link. Is that you?",x:"User hasn't said whether they clicked.",a:'sec',w:"Impersonation is a security case. If the user already entered a seed phrase or password, it's P1.",s:"That isn't us. We never message first and never ask you to verify a wallet through a link. Did you open the link or enter anything there? If yes, I'll get our security team on this now.",n:"\"Thanks for letting us know!\" and closing the chat."},
+{m:"My KYC was rejected, it says the photo of my passport is unclear.",x:"First rejection.",a:'bot',w:"First rejection for image quality is a self-serve fix with clear steps. A second rejection goes to a person.",s:"You can upload it again from Profile, Verification. Use daylight, no flash, all four corners visible and no glare on the photo page.",n:"Promising approval after the next upload."},
+{m:"Can I talk to a real person please",x:"Second message in the chat.",a:'agent',w:"When someone asks for a person, they get one. The bot's only job is to say the honest wait time.",s:"Connecting you with a colleague now. The current wait is about 6 minutes, and they'll see this whole conversation.",n:"Another round of bot questions before handing over."},
+{m:"My advisor says I need to send all my savings to his platform today or I'll miss the profit. Can you raise my withdrawal limit?",x:"Account opened 9 days ago. Age 67.",a:'agent',w:"Classic investment scam pressure on a possibly vulnerable person. A senior agent should talk to them before any limit changes. Flag for compliance too.",s:"Before we change anything, I'd like a colleague to talk this through with you. It'll take a few minutes. Please don't send anything until you've spoken to them.",n:"A limit increase form, or \"we can't give financial advice\" and nothing else."},
+{m:"What are the trading fees for VIP 1?",x:"",a:'bot',w:"Public information that lives on the fees page.",s:"VIP 1 fees are on our fees page, here's the link. Your tier updates automatically based on your 30-day volume.",n:"A fee number from memory that might be outdated."},
+{m:"I sent XRP but forgot the destination tag. Is it lost?",x:"Tx hash provided. Funds reached the exchange's hot wallet.",a:'agent',w:"Recoverable in most cases, but it needs a manual match and a person to credit it.",s:"It's usually recoverable. I've passed your hash to the team that matches deposits without a tag. They may ask you to confirm the amount and time.",n:"\"Funds sent without a tag can't be recovered.\""},
+{m:"I've attached a letter from the police asking for information about an account.",x:"PDF attached, sent through the chat.",a:'comp',w:"Law enforcement requests go to the legal and compliance team through the official channel. Support never shares account data in chat.",s:"This needs our legal team. Please send it to our official law enforcement request address on our website so it's handled properly. I can't share account information here.",n:"Any detail about the account, even confirming that it exists."},
+{m:"The app shows my balance as zero after the update. Lots of people in the Telegram group say the same.",x:"7 similar tickets in the last 20 minutes.",a:'agent',w:"Looks like an incident. An agent owns the user, and the support lead opens an incident with engineering. The bot should not improvise an explanation.",s:"We're checking a display issue after the latest update. Your funds are not affected by how the balance is shown. I've linked your report and we'll update you here.",n:"\"Try reinstalling the app.\""},
+{m:"I want to change the phone number on my account, I lost my old SIM.",x:"",a:'agent',w:"Phone changes are a common takeover route. It needs identity checks done by a person, never by a bot flow alone.",s:"I'll pass you to a colleague who can do this safely. They'll ask you to confirm your identity first. That's to protect your account.",n:"A link that lets anyone change the number after one email code."},
+{m:"This wallet address scammed me. He's your user. Tell me his name.",x:"Address does belong to an exchange deposit wallet.",a:'comp',w:"A fraud report. Compliance takes it and may act on it, but support can't disclose anything about another customer.",s:"I'm sorry this happened. I can't share information about any account, but I can take a fraud report and pass it to the team that reviews these. A police report helps, as they can request details officially.",n:"\"Yes, that's one of our users.\""},
+{m:"This is the third time I'm asking. If nobody fixes this I'm complaining to the regulator.",x:"Two earlier tickets on the same withdrawal delay.",a:'agent',w:"A formal complaint signal and a repeat contact. A senior agent owns it, logs it as a complaint and tracks the response deadline.",s:"You're right to be frustrated, and I'm sorry you've had to ask three times. A senior colleague is taking this over now and will log it as a formal complaint so it gets a proper answer.",n:"A copy of the same reply the user already got twice."},
+{m:"How do I turn on 2FA?",x:"",a:'bot',w:"Standard how-to. A good bot answer here also helps prevent the security tickets above.",s:"Go to Profile, Security, Two-factor authentication, and follow the steps with an authenticator app. Save the backup key somewhere offline.",n:"Suggesting SMS as the best option."}
+];
+let i=0,ans={};
+const $=id=>document.getElementById(id);
+function render(){const t=T[i],g=ans[i];
+ $('ticket').innerHTML=`<div class="meta"><span class="num">TICKET ${String(i+1).padStart(2,'0')} / ${T.length}</span>${g?`<span class="tag ${R[t.a].c}">${R[t.a].t}</span>`:''}</div>
+ <div class="msg">${t.m}</div>${t.x?`<div class="ctx">${t.x}</div>`:'<div class="ctx">No extra context.</div>'}
+ <div class="choices">${Object.keys(R).map(k=>`<button class="btn choice ${g?(k===t.a?'right':(k===g?'wrong':'')):''}" data-k="${k}" ${g?'disabled':''}><span>${R[k].t}</span><small>${R[k].d}</small></button>`).join('')}</div>
+ <div class="answer ${g?'show':''}"><div class="verdict ${g===t.a?'ok':'no'}">${g===t.a?'Right.':'Not quite. This one is '+R[t.a].t+'.'}</div><p>${t.w}</p>
+ <div class="say"><b>WHAT TO SAY</b>${t.s}</div><div class="never"><b>NEVER</b>${t.n}</div></div>
+ <div class="nav"><button class="btn" id="prev" ${i===0?'disabled':''}>Previous</button><button class="btn ${g?'primary':''}" id="next">${i===T.length-1?'See result':'Next ticket'}</button></div>`;
+ document.querySelectorAll('.choice').forEach(b=>b.onclick=()=>{ans[i]=b.dataset.k;render();});
+ $('prev').onclick=()=>{i--;render();};
+ $('next').onclick=()=>{if(i<T.length-1){i++;render();}else{summary();}};
+ const keys=Object.keys(ans);$('answered').textContent=keys.length;$('score').textContent=keys.filter(k=>ans[k]===T[k].a).length;
+ $('dots').innerHTML=T.map((_,j)=>`<button class="dot ${j===i?'cur':''} ${ans[j]?(ans[j]===T[j].a?'r':'w'):''}" data-j="${j}" aria-label="Ticket ${j+1}">${j+1}</button>`).join('');
+ document.querySelectorAll('.dot').forEach(d=>d.onclick=()=>{i=+d.dataset.j;render();});
+}
+function summary(){const n=Object.keys(ans).length,s=Object.keys(ans).filter(k=>ans[k]===T[k].a).length;
+ const miss=T.map((t,j)=>({t,j})).filter(o=>ans[o.j]&&ans[o.j]!==o.t.a);
+ $('ticket').innerHTML=`<p class="eyebrow">Result</p><h3 style="font-size:1.6rem">${s} of ${n} answered right${n<T.length?` (${T.length-n} skipped)`:''}</h3>
+ <p>${s===T.length?'Clean run. Every ticket went to the right place.':'The ones to look at again:'}</p>
+ ${miss.map(o=>`<p><button class="btn" data-j="${o.j}" style="min-height:36px;padding:6px 12px">Ticket ${o.j+1}</button> <span class="muted">${o.t.m.slice(0,70)}${o.t.m.length>70?'…':''}</span></p>`).join('')}
+ <p class="muted" style="margin-top:16px">The pattern I see most in real teams: security cases routed as normal tickets, and restricted accounts explained too much.</p>`;
+ $('ticket').querySelectorAll('[data-j]').forEach(b=>b.onclick=()=>{i=+b.dataset.j;render();});
+}
+$('reset').onclick=()=>{ans={};i=0;render();};
+render();
+
+/* handoff note */
+const TYPES={"Suspected account takeover":"P1 · Security","Phishing or impersonation":"P2 · Security (P1 if credentials shared)","Deposit not credited":"P3 · Payments ops","Missing memo or tag":"P3 · Payments ops","Withdrawal delayed":"P3 · Payments ops","Account restricted":"Compliance queue","Fraud report about another user":"Compliance queue","Vulnerable user or scam pressure":"P2 · Senior agent + compliance flag","Formal complaint":"P2 · Senior agent, complaint log","Bot failed twice":"P3 · Tier 1","User asked for a person":"Issue priority · Tier 1","Possible incident (many users)":"P2 · Support lead + engineering"};
+const ft=$('f-type');ft.innerHTML=Object.keys(TYPES).map(k=>`<option>${k}</option>`).join('');
+const F=['f-type','f-ch','f-said','f-checked','f-asset','f-tx','f-told','f-lang','f-mood'];
+function v(id){return $(id).value.trim();}
+function note(){const ty=v('f-type'),route=TYPES[ty];
+ const lines=[`HANDOFF · ${ty}`,`Route: ${route}`,`Channel: ${v('f-ch')} · Language: ${v('f-lang')} · Mood: ${v('f-mood')}`,'',
+ `User reported: ${v('f-said')||'[missing]'}`,`Already checked: ${v('f-checked')||'[missing]'}`,`Asset / amount: ${v('f-asset')||'n/a'}`,`Tx / ref: ${v('f-tx')||'n/a'}`,`User has been told: ${v('f-told')||'[missing]'}`,'',
+ 'Next: confirm in your first message what you already know. Don\'t ask the user to repeat it.'];
+ if(route.startsWith('Compliance'))lines.push('Reminder: no reasons, no details about reviews or other accounts in chat.');
+ if(route.startsWith('P1'))lines.push('Reminder: stay in the chat until security joins. Never ask for passwords, 2FA codes or seed phrases.');
+ $('out').textContent=lines.join('\n');
+ const miss=['f-said','f-checked','f-told'].filter(id=>!v(id)).map(id=>$(id).previousElementSibling.textContent.toLowerCase());
+ $('miss').textContent=miss.length?`Still missing: ${miss.join(', ')}.`:'';
+}
+F.forEach(id=>$(id).addEventListener('input',note));F.forEach(id=>$(id).addEventListener('change',note));
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText($('out').textContent);$('copied').textContent='Copied';}catch(e){const r=document.createRange();r.selectNodeContents($('out'));const s=getSelection();s.removeAllRanges();s.addRange(r);$('copied').textContent='Selected, press Ctrl+C';}setTimeout(()=>$('copied').textContent='',2200);};
+$('example').onclick=()=>{$('f-type').value='Deposit not credited';$('f-ch').value='In-app chat';$('f-said').value='Sent 1,200 USDT on Tron two hours ago, balance still zero.';$('f-checked').value='Tx confirmed on Tronscan, network matches the deposit address, not in the credited list.';$('f-asset').value='1,200 USDT (TRC-20)';$('f-tx').value='9f3c…e21a (synthetic)';$('f-told').value='That a colleague will check why it was not credited. No time promised.';$('f-lang').value='English';$('f-mood').value='Worried';note();};
+$('clear').onclick=()=>{$('nf').reset();note();};
+note();
+</script>
+</body>
+</html>
